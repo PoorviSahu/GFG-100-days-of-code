@@ -1,0 +1,32 @@
+//https://practice.geeksforgeeks.org/problems/sum-of-query-ii5310/1
+
+class Solution:
+    def querySum(self, n, arr, q, queries):
+        prefix = [0] + arr
+        for i in range(1, n+1):
+            prefix[i] += prefix[i-1]
+            ans = []
+            
+        for i in range(0, 2*q-1, 2):
+            ans.append(prefix[queries[i+1]] - prefix[queries[i]-1])
+            
+        return ans
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        arr = input().split()
+        for i in range(n):
+            arr[i] = int(arr[i])
+        q = int(input())
+        queries = input().split()
+        for i in range(0,2*q,2):
+            queries[i] = int(queries[i])
+            queries[i+1] = int(queries[i+1])
+        
+        ob = Solution()
+        ans = ob.querySum(n, arr, q, queries)
+        for it in(ans):
+            print(it,end=" ")
+        print()
