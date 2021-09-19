@@ -1,0 +1,29 @@
+// https://practice.geeksforgeeks.org/problems/median-of-2-sorted-arrays-of-different-sizes/1#
+
+def MedianOfArrays(self, array1, array2):
+        arr = array1+array2
+        arr.sort()
+        lent = len(arr)
+        if lent%2 == 0:
+            mid = lent//2
+            med = (arr[mid]+arr[mid-1])/2
+            if str(med)[-2] is "." and str(med)[-1] is "0":
+                return int(med)
+            else:
+                return med
+        else:
+            mid = lent//2
+            return arr[mid]
+
+if __name__ == '__main__':
+    tcs=int(input())
+
+    for _ in range(tcs):
+        m = input()
+        arr1=[int(x) for x in input().split()]
+        n = input()
+        arr2=[int(x) for x in input().split()]
+        
+        
+        ob = Solution()
+        print(ob.MedianOfArrays(arr1,arr2))
