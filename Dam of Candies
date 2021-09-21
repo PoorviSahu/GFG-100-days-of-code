@@ -1,0 +1,50 @@
+// https://practice.geeksforgeeks.org/problems/10471201e923a0b88a0c1482e6c7e8cc6fdfe93a/1#
+
+#include<bits/stdc++.h> 
+using namespace std; 
+
+class Solution{
+    
+    public:
+    int maxCandy(int height[], int n) 
+    { 
+        int i=0,j=n-1,area=0;
+          while(i<j)
+       {
+           if(height[i]<height[j])
+           {
+               area=max(height[i]*(j-i-1),area);
+               i++;
+           }
+           else
+           {
+               area=max(height[j]*(j-i-1),area);
+               j--;
+           }
+       }
+       return area;
+        }
+    
+        
+    };
+
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    	int n;
+    	cin>>n;
+    	int height[n];
+    	for (int i = 0; i < n; ++i)
+    	{
+    		cin>>height[i];
+    	}
+    	
+    	Solution obj;
+    	
+    	cout << obj.maxCandy(height,n)<<"\n";
+    }
+    return 0;
+} 
